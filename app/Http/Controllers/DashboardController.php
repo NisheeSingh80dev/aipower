@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Support\facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,15 +20,13 @@ use Illuminate\Support\Facades\Cache;
 
 class DashboardController extends Controller
 {
-    
-   
     protected $project;
     protected $gallery;
     protected $event;
     protected $blog;
-    public function __construct(Project $project, Gallery $gallery, Event $event , Blog $blog)
+    public function __construct(Project $project, Gallery $gallery, Event $event, Blog $blog)
     {
-       
+
 
         $this->project = $project;
         $this->gallery = $gallery;
@@ -35,132 +35,114 @@ class DashboardController extends Controller
     }
 
     public function index(Request $request)
-{
+    {
         return view('index');
-}
+    }
 
     public function about()
-    { 
-         return view('about');
-       
+    {
+        return view('about');
     }
     public function career()
-    {   
+    {
         return view('career');
-       
     }
     public function completeProject()
-    {   
-        $project = $this->project->getAllCompletedProject(); 
-        return view('completeProject' ,compact('project'));
-       
+    {
+        $project = $this->project->getAllCompletedProject();
+        return view('completeProject', compact('project'));
     }
     public function gallery()
-    {   
-     
-        $gallery = $this->gallery->getAllGallery(); 
-        return view('gallery',compact('gallery'));
-       
+    {
+
+        $gallery = $this->gallery->getAllGallery();
+        return view('gallery', compact('gallery'));
     }
     public function video()
-    {   
-       
+    {
+
 
         return view('video');
-       
     }
     public function blog()
-    {   
-        $blog = $this->blog->getAllBlog(); 
-       
-        return view('blog',compact('blog'));
-       
+    {
+        $blog = $this->blog->getAllBlog();
+
+        return view('blog', compact('blog'));
     }
     public function blogDetails($id)
-    {   
-        $blogDetails = $this->blog->getBlogDetailsById($id)->first(); 
-        return view('blogDetails',compact('blogDetails'));
-       
+    {
+        $blogDetails = $this->blog->getBlogDetailsById($id)->first();
+        return view('blogDetails', compact('blogDetails'));
     }
     public function transmission()
-    {   
-       
+    {
+
 
         return view('transmission');
-       
     }
     public function vision()
-    {   
-      
+    {
+
 
         return view('vision');
-       
     }
-    
+
     public function team()
-    {   
-      
+    {
+
         return view('team');
-       
     }
     public function construction()
-    {   
-   
+    {
+
 
         return view('construction');
-       
     }
     public function undergroundCable()
-    {   
-    
+    {
 
         return view('undergroundCable');
-       
     }
     public function runningProject()
-    {   
-        $project = $this->project->getAllRunningProject(); 
-        
-       return view('runningProject' ,compact('project'));
-       
+    {
+        $project = $this->project->getAllRunningProject();
+
+        return view('runningProject', compact('project'));
     }
     public function press()
-    {   
-        $event = $this->event->getAllEvent(); 
-       return view('press' ,compact('event'));
-       
+    {
+        $event = $this->event->getAllEvent();
+        return view('press', compact('event'));
     }
     public function contact()
-    {   
+    {
         return view('contact');
-       
     }
 
     public function saveQuery(Request $request)
-{
-    
-    $validated = $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|max:255',
-        'phone' => 'required|string|max:20',
-        'remark' => 'required|string|max:500',
-        'subject' => 'required|string|max:255',
-    ]);
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:20',
+            'remark' => 'required|string|max:500',
+            'subject' => 'required|string|max:255',
+        ]);
 
-    $query = Query::create($validated);
+        //   $query = Query::create($validated);
 
-   /*  return response()->json([
-        'status' => 'success',
-        'message' => 'Query submitted successfully',
-        'data' => $query,
-    ], 200); */
-}
-
+        //   return response()->json([
+        //     'status' => 'success',
+        //     'message' => 'Query submitted successfully',
+        //      'data' => $query,
+        //  ], 200);
+        // }
 
 
 
 
-
+    }
 
 
 
@@ -170,12 +152,7 @@ class DashboardController extends Controller
 
 
 
-
-
-
-
-
-/* 
+    /* 
 
 
     public function category(Request $request)

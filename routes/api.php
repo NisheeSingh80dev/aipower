@@ -11,6 +11,8 @@ use App\Http\Controllers\QueryController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\EventController;
 
 
 
@@ -58,4 +60,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/updateVideo', [VideoController::class, 'updateVideo']);
     Route::get('/getAllVideo', [VideoController::class, 'getAllVideo']);
     Route::post('/deleteVideo', [VideoController::class, 'deleteVideo']);
+
+    Route::post('/saveProject', [ProjectController::class, 'saveProject']);
+    Route::get('/getAllProject', [ProjectController::class, 'getAllProject']);
+    Route::post('/updateProject', [ProjectController::class, 'updateProject']);
+    Route::post('/deleteProject', [ProjectController::class, 'deleteProject']);
+
+    Route::post('/saveEvent', [EventController::class, 'saveEvent']);
+    Route::get('/getAllEvent', [EventController::class, 'getAllEvent']);
+    Route::post('/updateEvent', [EventController::class, 'updateEvent']);
 });

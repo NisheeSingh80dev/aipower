@@ -11,7 +11,7 @@ class Query extends Model
 
     use HasFactory;
     protected $table = 'contact';
-    protected $fillable = ['name', 'email', 'phone', 'remark', 'user_id'];
+    protected $fillable = ['name', 'email', 'phone', 'remark', 'subject'];
 
     public function getAllQuery()
     {
