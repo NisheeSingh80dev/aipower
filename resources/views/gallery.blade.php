@@ -20,8 +20,8 @@
                 <div class="project-item2">
                     <div class="box-img"><img src="{{$row->image_url}}" alt="project image"></div>
                     <div class="box-content">
-                        <p class="box-subtitle">{{$row->title}}</p>
-                        <h3 class="box-title"><a href="project-details.html">{{$row->subtitle}}</a></h3></div>
+                        <p class="box-title">{{$row->title}}</p>
+                        <h3 class="box-title"><a href="project-details.html">{{$row->title}}</a></h3></div>
                     <div class="box-btn"><a href="{{$row->image_url}}" class="icon-btn popup-image"><i class="fa-solid fa-arrow-up-right"></i></a></div>
                 </div>
             </div>

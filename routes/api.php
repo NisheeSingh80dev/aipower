@@ -13,6 +13,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ClientController;
 
 
 
@@ -69,4 +70,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/saveEvent', [EventController::class, 'saveEvent']);
     Route::get('/getAllEvent', [EventController::class, 'getAllEvent']);
     Route::post('/updateEvent', [EventController::class, 'updateEvent']);
+
+
+    Route::post('/saveClient', [ClientController::class, 'saveClient']);
+    Route::post('/updateClient', [ClientController::class, 'updateClient']);
+    Route::get('/getAllClient', [ClientController::class, 'getAllClient']);
+    Route::post('/deleteClient', [ClientController::class, 'deleteClient']);
 });

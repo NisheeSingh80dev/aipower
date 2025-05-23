@@ -130,7 +130,7 @@ class DashboardController extends Controller
             'subject' => 'required|string|max:255',
         ]);
 
-        //   $query = Query::create($validated);
+        // \  $query = Query::create($validated);
 
         //   return response()->json([
         //     'status' => 'success',

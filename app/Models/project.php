@@ -2,9 +2,6 @@
 
 namespace App\Models;
 
-
-
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -14,14 +11,14 @@ class Project extends Model
 
     use HasFactory;
     protected $table = 'projects';
-    protected $fillable = ['title', 'subtitle', 'type'];
+    protected $fillable = ['title', 'subtitle', 'type', 'image', 'status'];
 
     public function getAllRunningProject()
     {
         $res = DB::table('projects')
 
             ->select('*')
-            ->where('type', '1')
+            //   ->where('type', '1')
             //   ->where('status', '1')
             ->get();
 

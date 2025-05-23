@@ -10,12 +10,12 @@ class Query extends Model
 {
 
     use HasFactory;
-    protected $table = 'contact';
-    protected $fillable = ['name', 'email', 'phone', 'remark', 'subject'];
+    protected $table = 'query';
+    protected $fillable = ['name', 'email', 'phone', 'remark', 'user_id'];
 
     public function getAllQuery()
     {
-        $res = DB::table('contact')
+        $res = DB::table('query')
             ->select('*')
             //  ->where('status', '1')
             ->get();

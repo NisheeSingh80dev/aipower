@@ -13,20 +13,9 @@ class ProjectController extends Controller
 
     protected $project;
 
-    public function __construct(Project $project)
+    public function __construct(Project $projects)
     {
-        $this->project = $project;
-    }
-
-    public function allProduct(Request $request)
-    {
-
-        $projects = Project::all(); // or getAllProduct() if defined
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Products fetched successfully',
-            'data' => $projects,
-        ], 200);
+        $this->project = $projects;
     }
 
     public function saveProject(Request $request)
@@ -34,8 +23,8 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'subtitle' => 'required|string|max:255',
-            'type' => 'required|integer',
-            'status' => 'required|integer',
+            'type' => 'required|string|max:255',
+            'status' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -70,12 +59,13 @@ class ProjectController extends Controller
     {
 
         $validated = $request->validate([
-            'project_id' => 'required|integer',
+            'id' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'subtitle' => 'required|string|max:255',
-            'type' => 'required|integer',
+            'status' => 'required|integer',
+            'type' => 'required|string|max:255',
         ]);
-        $project = Project::find($validated['project_id']);
+        $project = Project::find($validated['id']);
         if (!$project) {
             return response()->json([
                 'status' => false,
@@ -92,18 +82,27 @@ class ProjectController extends Controller
         }
         $project->title = $validated['title'];
         $project->subtitle = $validated['subtitle'];
-        $project->type = $validated['type'];
+        $project->status = $validated['status'];
+        //     $project->type = $validated['type'];
         $project->updated_at = now();
         $project->save();
         return response()->json([
             'status' => 'success',
-            'message' => 'Product updated successfully',
+            'message' => 'Project updated successfully',
             'data' =>  $project,
         ], 200);
     }
 
+    public function getAllProject(Request $request)
+    {
 
-
+        $projects = Project::all(); // or getAllProduct() if defined
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Projects fetched successfully',
+            'data' => $projects,
+        ], 200);
+    }
 
     public function deleteProject(Request $request)
     {

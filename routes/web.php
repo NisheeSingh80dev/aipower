@@ -21,7 +21,7 @@ Route::get('/undergroundCable', [DashboardController::class, 'undergroundCable']
 Route::get('/runningProject', [DashboardController::class, 'runningProject']);
 Route::get('/press', [DashboardController::class, 'press']);
 Route::get('/contact', [DashboardController::class, 'contact']);
-//Route::get('/saveQuery', [DashboardController::class, 'saveQuery']);
+Route::post('/saveQuery', [DashboardController::class, 'saveQuery']);
 
 
 
